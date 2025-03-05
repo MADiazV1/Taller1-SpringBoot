@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="container mt-5">
+        <div class="card mx-auto shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 400px;" th:each="payMethod : ${payMethods}">
+            <div class="card-header bg-primary text-white text-center fw-bold">
+                Método de Pago
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    <i class="fas fa-credit-card"></i> **** **** **** <span th:text="${payMethod.cardNumber.substring(12)}"></span>
+                </h5>
+                <p class="card-text"><strong>Nombre del Titular:</strong> <span th:text="${payMethod.ownersName}"></span></p>
+                <p class="card-text"><strong>Fecha de Expiración:</strong> <span th:text="${payMethod.expirationDate}"></span></p>
+                <p class="card-text"><strong>CVV:</strong> ***</p>
+            </div>
+            <div class="card-footer text-center">
+                <form th:action="@{/methodsOfPayment/delete/{id} (id=${payMethod.id})}" method="post"
+                      onsubmit="return confirm('¿Estás seguro de que deseas eliminar este método de pago?');">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                </form>
+
+                <a class="btn btn-warning" th:href="@{/methodsOfPayment/{id} (id=${payMethod.id})}">
+                    <i class="fas fa-edit"></i> Ver
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

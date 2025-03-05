@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="container mt-5">
+        <div class="card mx-auto shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 400px;">
+            <div class="card-header bg-primary text-white text-center fw-bold">
+                Tarjeta de Pago
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title">
+                    <i class="fas fa-credit-card"></i> <span th:text="${payMethod.cardNumber}"></span>
+                </h5>
+                <p class="card-text"><strong>Nombre del Titular:</strong> <span th:text="${payMethod.ownersName}"></span></p>
+                <p class="card-text"><strong>Fecha de Expiración:</strong> <span th:text="${payMethod.expirationDate}"></span></p>
+                <p class="card-text"><strong>CVV:</strong> <span th:text="${payMethod.cvv}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

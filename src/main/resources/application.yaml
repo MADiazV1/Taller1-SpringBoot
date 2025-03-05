@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: taller1
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/MethodOfPayment
+    username: root
+    password: #Contraseña
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
