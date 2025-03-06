@@ -5,7 +5,7 @@ services:
     image: mysql:8.0
     container_name: mysql-container
     environment:
-      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_ROOT_PASSWORD: <mi-contraseña>
       MYSQL_DATABASE: "MethodOfPayment"
     ports:
       - "3307:3306"
